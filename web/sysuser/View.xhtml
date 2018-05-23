@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSysuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSysuserLabel_userId}"/>
+                    <h:outputText value="#{sysuserController.selected.userId}" title="#{bundle.ViewSysuserTitle_userId}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_userNick}"/>
+                    <h:outputText value="#{sysuserController.selected.userNick}" title="#{bundle.ViewSysuserTitle_userNick}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_userName}"/>
+                    <h:outputText value="#{sysuserController.selected.userName}" title="#{bundle.ViewSysuserTitle_userName}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_userStatus}"/>
+                    <h:outputText value="#{sysuserController.selected.userStatus}" title="#{bundle.ViewSysuserTitle_userStatus}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_userPsw}"/>
+                    <h:outputText value="#{sysuserController.selected.userPsw}" title="#{bundle.ViewSysuserTitle_userPsw}"/>
+                    <h:outputText value="#{bundle.ViewSysuserLabel_userEmail}"/>
+                    <h:outputText value="#{sysuserController.selected.userEmail}" title="#{bundle.ViewSysuserTitle_userEmail}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sysuserController.destroyAndView}" value="#{bundle.ViewSysuserDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSysuserEditLink}"/>
+                <br />
+                <h:commandLink action="#{sysuserController.prepareCreate}" value="#{bundle.ViewSysuserCreateLink}" />
+                <br />
+                <h:commandLink action="#{sysuserController.prepareList}" value="#{bundle.ViewSysuserShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSysuserIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

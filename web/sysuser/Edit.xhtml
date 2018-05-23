@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSysuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_userId}" for="userId" />
+                    <h:inputText id="userId" value="#{sysuserController.selected.userId}" title="#{bundle.EditSysuserTitle_userId}" required="true" requiredMessage="#{bundle.EditSysuserRequiredMessage_userId}"/>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_userNick}" for="userNick" />
+                    <h:inputText id="userNick" value="#{sysuserController.selected.userNick}" title="#{bundle.EditSysuserTitle_userNick}" required="true" requiredMessage="#{bundle.EditSysuserRequiredMessage_userNick}"/>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_userName}" for="userName" />
+                    <h:inputText id="userName" value="#{sysuserController.selected.userName}" title="#{bundle.EditSysuserTitle_userName}" required="true" requiredMessage="#{bundle.EditSysuserRequiredMessage_userName}"/>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_userStatus}" for="userStatus" />
+                    <h:inputText id="userStatus" value="#{sysuserController.selected.userStatus}" title="#{bundle.EditSysuserTitle_userStatus}" required="true" requiredMessage="#{bundle.EditSysuserRequiredMessage_userStatus}"/>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_userPsw}" for="userPsw" />
+                    <h:inputText id="userPsw" value="#{sysuserController.selected.userPsw}" title="#{bundle.EditSysuserTitle_userPsw}" required="true" requiredMessage="#{bundle.EditSysuserRequiredMessage_userPsw}"/>
+                    <h:outputLabel value="#{bundle.EditSysuserLabel_userEmail}" for="userEmail" />
+                    <h:inputText id="userEmail" value="#{sysuserController.selected.userEmail}" title="#{bundle.EditSysuserTitle_userEmail}" required="true" requiredMessage="#{bundle.EditSysuserRequiredMessage_userEmail}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{sysuserController.update}" value="#{bundle.EditSysuserSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSysuserViewLink}"/>
+                <br />
+                <h:commandLink action="#{sysuserController.prepareList}" value="#{bundle.EditSysuserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSysuserIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSysfunctionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSysfunctionsEmpty}" rendered="#{sysfunctionsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sysfunctionsController.items.rowCount > 0}">
+                    <h:outputText value="#{sysfunctionsController.pagination.pageFirstItem + 1}..#{sysfunctionsController.pagination.pageLastItem + 1}/#{sysfunctionsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sysfunctionsController.previous}" value="#{bundle.Previous} #{sysfunctionsController.pagination.pageSize}" rendered="#{sysfunctionsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sysfunctionsController.next}" value="#{bundle.Next} #{sysfunctionsController.pagination.pageSize}" rendered="#{sysfunctionsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sysfunctionsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysfunctionsTitle_functionId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.functionId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysfunctionsTitle_functionNane}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.functionNane}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysfunctionsTitle_functionStatus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.functionStatus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSysfunctionsTitle_functionDescr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.functionDescr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sysfunctionsController.prepareView}" value="#{bundle.ListSysfunctionsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sysfunctionsController.prepareEdit}" value="#{bundle.ListSysfunctionsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sysfunctionsController.destroy}" value="#{bundle.ListSysfunctionsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sysfunctionsController.prepareCreate}" value="#{bundle.ListSysfunctionsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSysfunctionsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

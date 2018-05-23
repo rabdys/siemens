@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSysuserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_userId}" for="userId" />
+                    <h:inputText id="userId" value="#{sysuserController.selected.userId}" title="#{bundle.CreateSysuserTitle_userId}" required="true" requiredMessage="#{bundle.CreateSysuserRequiredMessage_userId}"/>
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_userNick}" for="userNick" />
+                    <h:inputText id="userNick" value="#{sysuserController.selected.userNick}" title="#{bundle.CreateSysuserTitle_userNick}" required="true" requiredMessage="#{bundle.CreateSysuserRequiredMessage_userNick}"/>
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_userName}" for="userName" />
+                    <h:inputText id="userName" value="#{sysuserController.selected.userName}" title="#{bundle.CreateSysuserTitle_userName}" required="true" requiredMessage="#{bundle.CreateSysuserRequiredMessage_userName}"/>
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_userStatus}" for="userStatus" />
+                    <h:inputText id="userStatus" value="#{sysuserController.selected.userStatus}" title="#{bundle.CreateSysuserTitle_userStatus}" required="true" requiredMessage="#{bundle.CreateSysuserRequiredMessage_userStatus}"/>
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_userPsw}" for="userPsw" />
+                    <h:inputText id="userPsw" value="#{sysuserController.selected.userPsw}" title="#{bundle.CreateSysuserTitle_userPsw}" required="true" requiredMessage="#{bundle.CreateSysuserRequiredMessage_userPsw}"/>
+                    <h:outputLabel value="#{bundle.CreateSysuserLabel_userEmail}" for="userEmail" />
+                    <h:inputText id="userEmail" value="#{sysuserController.selected.userEmail}" title="#{bundle.CreateSysuserTitle_userEmail}" required="true" requiredMessage="#{bundle.CreateSysuserRequiredMessage_userEmail}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sysuserController.create}" value="#{bundle.CreateSysuserSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sysuserController.prepareList}" value="#{bundle.CreateSysuserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSysuserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
